@@ -1,4 +1,4 @@
-package dev.gabryel.conversorDeMoedas.main.util.propertyLoader.exceptions;
+package dev.gabryel.conversordemoedas.propertyloader.exceptions;
 
 public class PropertiesFileNotFoundException extends RuntimeException {
     private String message;

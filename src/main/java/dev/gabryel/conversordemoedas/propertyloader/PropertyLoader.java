@@ -1,6 +1,6 @@
-package dev.gabryel.conversorDeMoedas.main.util.propertyLoader;
+package dev.gabryel.conversordemoedas.propertyloader;
 
-import dev.gabryel.conversorDeMoedas.main.util.propertyLoader.exceptions.PropertiesFileNotFoundException;
+import dev.gabryel.conversordemoedas.propertyloader.exceptions.PropertiesFileNotFoundException;
 
 import java.io.IOException;
 import java.io.InputStream;
