@@ -1,7 +1,7 @@
 package dev.gabryel.conversordemoedas.main;
 
 import dev.gabryel.conversordemoedas.currencyrequest.CurrencyRequest;
-import dev.gabryel.conversordemoedas.propertyloader.PropertyLoader;
+import dev.gabryel.conversordemoedas.propertyloader.PropertiesLoader;
 
 import java.io.IOException;
 import java.net.http.HttpResponse;
@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        PropertyLoader propertyLoader = new PropertyLoader();
+        PropertiesLoader propertiesLoader = new PropertiesLoader();
         Scanner input = new Scanner(System.in);
-        String apiKey = propertyLoader.getProperty("api.key");
+        String apiKey = propertiesLoader.getProperty("api.key");
         System.out.println("Insira abreviação da moeda: ");
         String currencyAbbreviation = input.nextLine().toUpperCase();
 

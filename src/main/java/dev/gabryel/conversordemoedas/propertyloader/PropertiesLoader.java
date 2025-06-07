@@ -6,22 +6,22 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class PropertyLoader {
+public class PropertiesLoader {
     private static final String PROPERTIES_FILE = "application.properties";
     private Properties properties;
 
-    public PropertyLoader() {
-        properties = new Properties();
-        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE)) {
+    public PropertiesLoader(){
+        this.properties = new Properties();
+        try(InputStream inputStream = getClass().getClassLoader().getResourceAsStream(PROPERTIES_FILE)){
             if (inputStream != null) {
                 properties.load(inputStream);
-                return;
             }
-            throw new PropertiesFileNotFoundException("Não foi possível carregar o arquivo : " + PROPERTIES_FILE);
         } catch (IOException exception) {
-            throw new PropertiesFileNotFoundException(PROPERTIES_FILE + " arquivo não encontrado.");
+            System.err.println(exception.getMessage());
+            throw new PropertiesFileNotFoundException("Não foi possível carregar o arquivo " + PROPERTIES_FILE);
         }
     }
+
     public String getProperty(String key) {
         return properties.getProperty(key);
     }
