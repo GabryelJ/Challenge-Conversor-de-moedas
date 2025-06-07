@@ -16,16 +16,22 @@ public class CurrencyRequest {
             throw new IllegalArgumentException("A chave de API não pode ser nula ou vazia.");
         }
         this.apiKey = apiKey;
-        this.baseUrl = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/";
+        this.baseUrl = "https://v6.exchangerate-api.com/v6/" + apiKey + "/pair/";
         this.client = HttpClient.newHttpClient();
     }
 
-    public HttpResponse<String> getCurrency(String currencyAbbreviation) throws IOException, InterruptedException {
-        if (currencyAbbreviation == null || currencyAbbreviation.trim().isEmpty()) {
+    public HttpResponse<String> getCurrency(String currencyToExchangeAbbreviation, String targetCurrencyAbbreviation, Double currencyToExchangeAmount) throws IOException, InterruptedException {
+        if (currencyToExchangeAbbreviation == null ||
+                currencyToExchangeAbbreviation.trim().isEmpty() ||
+                targetCurrencyAbbreviation == null ||
+                targetCurrencyAbbreviation.trim().isEmpty() ||
+                currencyToExchangeAmount == null ||
+                currencyToExchangeAmount < 0
+        ) {
             throw new IllegalArgumentException("A abreviação da moeda não pode ser nula ou vazia.");
         }
 
-        URI uri = URI.create(baseUrl + currencyAbbreviation);
+        URI uri = URI.create(baseUrl + currencyToExchangeAbbreviation + "/" + targetCurrencyAbbreviation + "/" + currencyToExchangeAmount);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(uri)
                 .GET()
