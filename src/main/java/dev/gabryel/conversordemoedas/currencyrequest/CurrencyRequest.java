@@ -1,0 +1,36 @@
+package dev.gabryel.conversordemoedas.currencyrequest;
+
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+
+public class CurrencyRequest {
+    private final String apiKey;
+    private final String baseUrl;
+    private final HttpClient client;
+
+    public CurrencyRequest(String apiKey) {
+        if (apiKey == null || apiKey.trim().isEmpty()) {
+            throw new IllegalArgumentException("A chave de API não pode ser nula ou vazia.");
+        }
+        this.apiKey = apiKey;
+        this.baseUrl = "https://v6.exchangerate-api.com/v6/" + apiKey + "/latest/";
+        this.client = HttpClient.newHttpClient();
+    }
+
+    public HttpResponse<String> getCurrency(String currencyAbbreviation) throws IOException, InterruptedException {
+        if (currencyAbbreviation == null || currencyAbbreviation.trim().isEmpty()) {
+            throw new IllegalArgumentException("A abreviação da moeda não pode ser nula ou vazia.");
+        }
+
+        URI uri = URI.create(baseUrl + currencyAbbreviation);
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(uri)
+                .GET()
+                .build();
+
+        return client.send(request, HttpResponse.BodyHandlers.ofString());
+    }
+}
