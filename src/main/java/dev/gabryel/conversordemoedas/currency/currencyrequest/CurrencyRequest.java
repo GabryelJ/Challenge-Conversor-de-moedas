@@ -1,4 +1,4 @@
-package dev.gabryel.conversordemoedas.currencyrequest;
+package dev.gabryel.conversordemoedas.currency.currencyrequest;
 
 import java.io.IOException;
 import java.net.URI;
@@ -8,7 +8,7 @@ import java.net.http.HttpResponse;
 
 public class CurrencyRequest {
     private final String apiKey;
-    private final String baseUrl;
+    private String baseUrl;
     private final HttpClient client;
 
     public CurrencyRequest(String apiKey) {
@@ -16,7 +16,7 @@ public class CurrencyRequest {
             throw new IllegalArgumentException("A chave de API não pode ser nula ou vazia.");
         }
         this.apiKey = apiKey;
-        this.baseUrl = "https://v6.exchangerate-api.com/v6/" + apiKey + "/pair/";
+        this.baseUrl = "https://v6.exchangerate-api.com/v6/" + this.apiKey + "/pair/";
         this.client = HttpClient.newHttpClient();
     }
 

@@ -1,4 +1,4 @@
-package dev.gabryel.conversordemoedas.model;
+package dev.gabryel.conversordemoedas.currency.model;
 
 public record Currency(
         String base_code,
