@@ -29,6 +29,7 @@ Ex.:
 * Java 17 LTS
 * ExchangeRate-API
 * Gson 2.11.0
+* Maven
 
 ## Conceitos utilizados
 * Collections

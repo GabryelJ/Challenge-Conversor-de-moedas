@@ -13,7 +13,7 @@ public class CurrencyRequest {
 
     public CurrencyRequest(String apiKey) {
         if (apiKey == null || apiKey.trim().isEmpty()) {
-            throw new IllegalArgumentException("A chave de API não pode ser nula ou vazia.");
+            throw new IllegalArgumentException("A chave de API nao pode ser nula ou vazia.");
         }
         this.apiKey = apiKey;
         this.baseUrl = "https://v6.exchangerate-api.com/v6/" + this.apiKey + "/pair/";
@@ -28,7 +28,7 @@ public class CurrencyRequest {
                 currencyToExchangeAmount == null ||
                 currencyToExchangeAmount < 0
         ) {
-            throw new IllegalArgumentException("A abreviação da moeda não pode ser nula ou vazia.");
+            throw new IllegalArgumentException("A abreviação da moeda nao pode ser nula ou vazia.");
         }
 
         URI uri = URI.create(baseUrl + currencyToExchangeAbbreviation + "/" + targetCurrencyAbbreviation + "/" + currencyToExchangeAmount);
