@@ -33,5 +33,6 @@ Ex.:
 ## Conceitos utilizados
 * Collections
 * Exceções
-* java.net.http
-* 
+* Requisições HTTP
+* Enum
+* Regex

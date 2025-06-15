@@ -19,7 +19,7 @@ public class Main {
         PropertiesLoader propertiesLoader = new PropertiesLoader();
 
         boolean exit = false;
-        double currencyToExchangeAmount = 0f;
+        double currencyToExchangeAmount = 0;
         String fromCurrency = "";
         String toCurrency = "";
         String controlAnotherConvertion = "";
@@ -35,11 +35,11 @@ public class Main {
                 fromCurrency = currencyProcessing.pickCurrency();
                 toCurrency = currencyProcessing.pickCurrency();
                 currencyToExchangeAmount = currencyProcessing.pickCurrencyAmount();
-
+                System.out.println("Convertendo: " + currencyToExchangeAmount);
                 CurrencyRequest currencyRequest = new CurrencyRequest(apiKey);
                 HttpResponse<String> response = currencyRequest.getCurrency(fromCurrency, toCurrency, currencyToExchangeAmount);
                 Currency currency = gson.fromJson(response.body(), Currency.class);
-                System.out.println(currency);
+                System.out.println(currency.toString());
             }catch (IllegalArgumentException exception){
                 System.err.println("Argumento invalido: " + exception.getMessage());
             }catch (IOException exception){
