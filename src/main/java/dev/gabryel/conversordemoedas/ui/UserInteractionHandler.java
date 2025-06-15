@@ -17,7 +17,7 @@ public class UserInteractionHandler {
         System.out.println("Moedas disponiveis: ");
         for (CurrencyAbbreviation currency : CurrencyAbbreviation.values()) {
             if (!choosenCurrencies.contains(currency)) {
-                System.out.println(currency.name() + ":" + currency.getId());
+                System.out.println(currency.getFullName() + " - " + currency.name() + " - numero : " + currency.getId());
             }
         }
     }
@@ -40,6 +40,8 @@ public class UserInteractionHandler {
                     continue;
                 }
                 validAmount = true;
+            }else{
+                System.err.println("Quantidade invalida! Tente novamente.");
             }
         }
         return Double.valueOf(amount);
